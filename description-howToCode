@@ -1,0 +1,742 @@
+// VERSION 1 - Arrays
+
+// 1 It should have a place to store todos
+// 2 It should have a way to display todos
+// 3 It should have a way to add new todos
+// 4 It should have a way to change a todo
+// 5 It should have a way to delete a todo
+
+/*-------------------------------------*/
+
+// 1 - It should have a place to store todos
+
+// We just make a list of items, like a list
+// ["item 1", "item 2", "item 3"]
+// We then want to give a name to the list, that is a variable (var)
+
+// ACTION var todos = ["item 1", "item 2", "item 3"]
+
+// It should have a place to store todos → (DONE)
+
+/*-------------------------------------*/
+
+// 2 - It should have a way to display todos
+// We print with the console.log() function
+
+// ACTION console.log("My todos:", todos) 
+
+// we don't need quotations because we want the array to be printed, not the string
+// It should have a way to display todos → (DONE)
+
+/*-------------------------------------*/
+
+// 3 - It should have a way to add new todos
+
+// With the "push" command, we add an item at the end of an array
+
+// ACTION todos.push("item 4")
+
+// It should have a way to add new todos → (DONE)
+
+/*-------------------------------------*/
+
+// 4 - It should have a way to change a todo
+
+// To change an array, we first look inside the array, to know the position of the item we wanna change
+// Then we put the position in the square brackets
+
+// To see the first item: todos[0]
+// ACTION todos[0] = "changed item"
+
+// It should have a way to change a todo → (DONE)
+
+/*-------------------------------------*/
+
+// 5 - It should have a way to delete todos
+
+// We delete items with the "splice" command;
+// we need 2 things: the position, the amount of items to be deleted
+
+// ACTION todos.splice(0, 1) | It'll delete the first item
+
+// It should have a way to delete todos → (DONE)
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 2 - Functions
+
+// 6 - Functions are just recipes
+
+/*
+  makeTurkeySandwich
+    get one slice of bread
+    add turkey
+    put a slice of bread on top
+*/
+
+/* 
+Structure of a javascript function
+function makeTurkeySandwich() {
+    get one slice of bread;
+    add turkey;
+    put a slice of bread on top;
+  }
+*/
+
+// To run the function: makeTurkeySandwich()
+
+/*-------------------------------------*/
+
+// 7 - Customizing functions
+
+/*
+  makeSandwichWith _____
+    get one slice of bread
+    add _____
+    put a slice of bread on top
+*/
+
+
+
+// Structure of a javascript function
+/*
+function makeSandwichWith(filling) {
+    get one slice of bread;
+    add filling;
+    put a slice of bread on top;
+  }
+  */
+// makeSandwichWith("ham")
+
+/*-------------------------------------*/
+
+// 8 - Requirements
+
+/*
+  - It should have a function to display todos
+  - It should have a function to add todos
+  - It should have a function to change todos
+  - It should have a function to delete todos
+*/
+
+/*-------------------------------------*/
+
+// 9 - It should have a function to display todos
+
+var todos = ["item 1", "item 2", "item 3"]
+
+function displayTodos() {
+  console.log("My todos", todos);
+}
+
+/*-------------------------------------*/
+
+// 10 - It should have a function to add todos
+
+// The way you add items is through the "push" command
+
+function addTodo(todo) {
+  todos.push(todo);
+  displayTodos(); // this way we can see what's in the list
+}
+
+/*-------------------------------------*/
+
+// 11 - It should have a function to change todos
+
+function changeTodo(position, newValue) {
+  todos[position] = newValue;
+  displayTodos();
+}
+
+// Running example: changeTodo(0, "newItem")
+
+// 12 - It should have a function to delete todos
+
+function deleteTodo(position) {
+  todos.splice(position, 1); 
+  // first item gives the position of the item, the second gives the quantity to be deleted
+  displayTodos();
+}
+
+// to run the function: deleteTodo(2)
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 3 - Objects
+
+// 13 - What is an object
+
+// An object is group of data surrounded by curly braces
+ // We assign it a variable
+var myComputer = { 
+  // all these are properties: name: value,
+  operatingSystem: "linux",
+  screenSize: "15 inches",
+  purchaseYear: 2011,
+};
+
+// to see the entire object we just call it: myComputer
+// to see a specific part of it we write a dot and then the specific part: myComputer.screenSize
+
+/*-------------------------------------*/
+
+// 14 - Objects and Functions
+
+/*
+  var nicco = {
+    name: "Nicco",
+    sayName: function sayName() {
+      console.log(this.name); // It'll display only "name"
+  }
+*/
+
+/*-------------------------------------*/
+
+// 15 - Requirements
+
+/*
+  - It should store the todos array on an object
+  - It should have a displayTodos method
+  - It should have a addTodo method
+  - It should have a changeTodo method
+  - It should have a delete method
+*/
+
+/*-------------------------------------*/
+
+// 16 - It should store the todos array on an object
+
+var todoList = {
+  todos: ["item 1", "item 2", "item 3"],
+  displayTodos: function() { // when functions are method (inside an object), they don't need to be named
+    console.log("My todos:", this.todos);
+  },
+  addtodo: function(todo) { // addTodo method
+    this.todos.push(todo);
+    this.displayTodos();
+  },
+  changeTodo: function(position, newValue) {
+    this.todos[position] = newValue;
+    this.displayTodos();
+  },
+  deleteTodo: function(position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  }
+};
+
+// What's great is that all these functions are grouped just in one object
+
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 4 - Booleans
+
+// 17 - Requirements
+
+/*
+//  todoList.addTodo should add objects
+//  todoList.changeTodo should should change the todoText property
+//  todoList.toggleCompleted should change the completed property
+*/
+
+/*-------------------------------------*/
+
+var todoList = {
+  todos: [], // Preset items removed, substituted by objects added by addTodo below
+  displayTodos: function() { // when functions are method (inside an object), they don't need to be named
+    console.log("My todos:", this.todos);
+  },
+  addTodo: function(todoText) { // insted of todo, we are adding todoText, reffered to the object below
+  this.todos.push({
+    todoText: todoText, // The first is property, the second is a parameter, which can change
+    completed: false //It's a boolean value and it's false by default
+  }); // instead of todo, we are going to add an object{} with 2 properties
+  // to run: todoList.addTodo("some text") → It'll display an object inside of an array
+    this.displayTodos();
+  },
+  changeTodo: function(position, todoText) {
+    this.todos[position].todoText = todoText; // This'll change just the todoText property, rather than the whole parameter
+    this.displayTodos();
+  },
+  deleteTodo: function(position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  },
+  toggleCompleted: function(position) { // It needs a position to direct to
+    var todo = this.todos[position]; // it's a shortcut, insted of writing: this.todos[position].completed
+    todo.completed = !todo.completed; // we want the opposite
+    this.displayTodos();
+    //running ex.: todoList.toggleCompleted(0) → it'll switch true and false
+  }
+};
+
+
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 5 - Loops of logic
+
+// 18 - For loop
+
+/*
+  i = 0
+  Say "hey" if i < 3
+  Increase i by 1
+  
+  0 "hey"
+  1 "hey"
+  2 "hey"
+*/
+
+
+/*
+  for (initialization; condition; final-expression) {
+    console.log("hey");
+    }
+    
+  for (var i = 0; i < 3; i++) {
+    console.log(i);
+  }
+*/
+
+/*-------------------------------------*/
+
+// 19 - Looping over arrays
+
+/*
+  var testArray = ["item 1", "item 2", "item 3"];
+  
+  for (var i = 0; i < 3; i++) {
+    console.log(testArray[i]);
+  }
+*/
+
+// BUT using "3" works just in our case; better use testArray.length
+// The length property will automatically change when n. of items changes
+
+/*
+  So...
+  for (var i = 0; i < testArray.length; i++) {
+    console.log(testArray[i]);
+  }
+*/
+
+/*-------------------------------------*/
+
+// 20 - Requirements
+
+// .displayTodos should show .todoText
+// .displayTodos should tell you if .todos is empty
+// .displayTodos should show .completed
+
+/*-------------------------------------*/
+
+// 21 - .displayTodos should show .todoText
+
+/*
+  .displayTodos should show .todoText property on each object in the .todos array
+  So we have to do some processing on each object in our .todos array
+  This is a perfect task for a "for loop"
+*/
+
+var todoList = {
+  todos: [], // Preset items removed, substituted by objects added by addTodo below
+  displayTodos: function() { 
+    
+    /*for(var i = 0; i < this.todos.length; i++) { // we want to continue for n. times al long as the array (this.todos) length
+      NB when we are on an array, we access very easily with []
+      we want to access the todoText property on each item in the array (inside addTodo())
+      console.log(this.todos[i].todoText); // to see it, we just console.log
+    }*/
+    
+    // if there are no todos
+    // → if this.todos.length === 0;
+    if (this.todos.length === 0) {
+      console.log("Your todo list is empty!");
+    } else {
+        console.log("My todos:"); // this.todos eliminated, not so useful to see
+        // print todos as normal
+        // moved from above
+        for(var i = 0; i < this.todos.length; i++) { 
+          // console.log(this.todos[i].todoText); removed to be put in the if statement
+          
+          // check if .completed is true
+          if (this.todos[i].completed === true) {
+            // print with (x)
+            console.log("(x)", this.todos[i].todoText);
+          } else {
+            // print with ( )
+            console.log("( )", this.todos[i].todoText);
+          }
+      }
+    }
+  },
+  
+  addTodo: function(todoText) { // insted of todo, we are adding todoText, reffered to the object below
+  this.todos.push({
+    todoText: todoText, // The first is property, the second is a parameter, which can change
+    completed: false //It's a boolean value and it's false by default
+  }); // instead of todo, we are going to add an object{} with 2 properties
+  // to run: todoList.addTodo("some text") → It'll display an object inside of an array
+    this.displayTodos();
+  },
+  changeTodo: function(position, todoText) {
+    this.todos[position].todoText = todoText; // This'll change just the todoText property, rather than the whole parameter
+    this.displayTodos();
+  },
+  deleteTodo: function(position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  },
+  toggleCompleted: function(position) { // It needs a position to direct to
+    var todo = this.todos[position]; // it's a shortcut, insted of writing: this.todos[position].completed
+    todo.completed = !todo.completed; // we want the opposite
+    this.displayTodos();
+    //running ex.: todoList.toggleCompleted(0) → it'll switch true and false
+  }
+};
+
+
+/*-------------------------------------*/
+
+// 22 - displayTodos should tell you if todos is empty
+// 23 - displayTodos should show .completed
+
+var todoList = {
+  todos: [], // the array here is empty, so that the user can fill it up
+  displayTodos: function() {
+    // displayTodos should tell you if todos is empty
+    if (this.todos.length === 0) { // if there are no todos
+      console.log("Your todo list is empty!");
+    } else {
+        console.log("My todos:");
+      // for (initialization; condition; final expression)
+      // displayTodos should show .completed
+        for (var i = 0; i < this.todos.length; i++) {
+          if (this.todos[i].completed === true) {
+            console.log("(x)", this.todos[i].todoText);
+          } else {
+            console.log("( )", this.todos[i].todoText);
+          }
+        }
+    }
+      //print todos as normal
+  },
+  addTodo: function(todoText) {
+    this.todos.push({ // we are pushing an object, inside a function, inside an object
+      todoText: todoText, // we have the parameter and the argument that user is going to write
+      completed: false // it's false by default
+    });
+    this.displayTodos();
+  },
+  changeTodo: function(position, todoText) {
+    this.todos[position].todoText = todoText; // we want the todoText property to be changed, not the whole object, so we put ".todoText"
+    this.displayTodos();
+  },
+  deleteTodo: function (position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  },
+  toggleCompleted: function(position) {
+    var todo = this.todos[position];
+    todo.completed = !todo.completed;
+    this.displayTodos();
+  }
+};
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 6 - Thinking in code
+
+// Requirements
+// .toggleAll: if everything is true, make everything false
+// toggleAll: otherwise make everything true
+
+var todoList = {
+  todos: [], // the array here is empty, so that the user can fill it up
+  displayTodos: function() {
+    // displayTodos should tell you if todos is empty
+    if (this.todos.length === 0) { // if there are no todos
+      console.log("Your todo list is empty!");
+    } else {
+        console.log("My todos:");
+      // for (initialization; condition; final expression)
+      // displayTodos should show .completed
+        for (var i = 0; i < this.todos.length; i++) {
+          if (this.todos[i].completed === true) {
+            console.log("(x)", this.todos[i].todoText);
+          } else {
+            console.log("( )", this.todos[i].todoText);
+          }
+        }
+    }
+      //print todos as normal
+  },
+  addTodo: function(todoText) {
+    this.todos.push({ // we are pushing an object, inside a function, inside an object
+      todoText: todoText, // we have the parameter and the argument that user is going to write
+      completed: false // it's false by default
+    });
+    this.displayTodos();
+  },
+  changeTodo: function(position, todoText) {
+    this.todos[position].todoText = todoText; // we want the todoText property to be changed, not the whole object, so we put ".todoText"
+    this.displayTodos();
+  },
+  deleteTodo: function (position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  },
+  toggleCompleted: function(position) {
+    var todo = this.todos[position];
+    todo.completed = !todo.completed;
+    this.displayTodos();
+  },
+  toggleAll: function(){
+    var totalTodos = this.todos.length;
+    var completedTodos = 0; // that's a safe assumption
+    
+    // get number of completed todos
+    for (var i = 0; i < totalTodos; i++) {
+      if (this.todos[i].completed === true) {
+        completedTodos++;
+      }
+    }
+    
+  // Case 1: if everything is true, make everything false
+    if(completedTodos === totalTodos) {
+      // make everything false
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = false;
+      }
+    } else {
+    // Case 2: otherwise make everything true
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = true;
+      }
+    }
+    this.displayTodos();
+  }
+};
+
+// we want to get access to the display todos button
+var displayTodosButton = document.getElementById("displayTodosButton");
+// we want to run displayTodos method, when someone clicks the "Display Todos" button
+displayTodosButton.addEventListener("click", function(){
+  todoList.displayTodos();
+});
+
+
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// INTERLUDE - Data Types Overview
+
+/*
+- Objects
+  {} arrays, functions
+- Primitives (bulding blocks)
+  String
+  Number
+  Boolean
+  Undefined → value that hasn't been set
+  Null → nothing
+  
+  Comparison with primitives (values)
+  1 === 1 → true
+  "blu" === "blu" → true
+  ...
+  
+  Comparison with objects (references)
+  {} === {} → false
+  [1,2,3] === [1,2,3] → false
+  It's like comparing the same houses with different addresses.
+  Memory addresses are always different.
+*/
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 7 - HTML and the DOM
+
+// Requirements
+// There should be a displayTodo button and a toggleAll button in the app
+// Clicking "Display Todos" should run todoList.displayTodos
+// Clicking "Toggle All" should run todoList.toggleAll
+
+var todoList = {
+  todos: [], // the array here is empty, so that the user can fill it up
+  displayTodos: function() {
+    // displayTodos should tell you if todos is empty
+    if (this.todos.length === 0) { // if there are no todos
+      console.log("Your todo list is empty!");
+    } else {
+        console.log("My todos:");
+      // for (initialization; condition; final expression)
+      // displayTodos should show .completed
+        for (var i = 0; i < this.todos.length; i++) {
+          if (this.todos[i].completed === true) {
+            console.log("(x)", this.todos[i].todoText);
+          } else {
+            console.log("( )", this.todos[i].todoText);
+          }
+        }
+    }
+      //print todos as normal
+  },
+  addTodo: function(todoText) {
+    this.todos.push({ // we are pushing an object, inside a function, inside an object
+      todoText: todoText, // we have the parameter and the argument that user is going to write
+      completed: false // it's false by default
+    });
+    this.displayTodos();
+  },
+  changeTodo: function(position, todoText) {
+    this.todos[position].todoText = todoText; // we want the todoText property to be changed, not the whole object, so we put ".todoText"
+    this.displayTodos();
+  },
+  deleteTodo: function (position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  },
+  toggleCompleted: function(position) {
+    var todo = this.todos[position];
+    todo.completed = !todo.completed;
+    this.displayTodos();
+  },
+  toggleAll: function() {
+    var totalTodos = this.todos.length;
+    var completedTodos = 0; // that's a safe assumption
+    
+    // get number of completed todos
+    for (var i = 0; i < totalTodos; i++) {
+      if (this.todos[i].completed === true) {
+        completedTodos++;
+      }
+    }
+    
+  // Case 1: if everything is true, make everything false
+    if(completedTodos === totalTodos) {
+      // make everything false
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = false;
+      }
+    } else {
+    // Case 2: otherwise make everything true
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = true;
+      }
+    }
+    this.displayTodos();
+  }
+};
+
+// we want to get access to the display todos button
+var displayTodosButton = document.getElementById("displayTodosButton");
+// we want to run displayTodos method, when someone clicks the "Display Todos" button
+displayTodosButton.addEventListener("click", function(){
+  todoList.displayTodos();
+});
+
+var toggleAllButton = document.getElementById("toggleAllButton");
+
+toggleAllButton.addEventListener("click", function(){
+  todoList.toggleAll();
+});
+
+/*-------------------------------------*/
+/*-------------------------------------*/
+/*-------------------------------------*/
+
+// VERSION 8
+
+var todoList = {
+  todos: [], // the array here is empty, so that the user can fill it up
+  displayTodos: function() {
+    // displayTodos should tell you if todos is empty
+    if (this.todos.length === 0) { // if there are no todos
+      console.log("Your todo list is empty!");
+    } else {
+        console.log("My todos:");
+      // for (initialization; condition; final expression)
+      // displayTodos should show .completed
+        for (var i = 0; i < this.todos.length; i++) {
+          if (this.todos[i].completed === true) {
+            console.log("(x)", this.todos[i].todoText);
+          } else {
+            console.log("( )", this.todos[i].todoText);
+          }
+        }
+    }
+      //print todos as normal
+  },
+  addTodo: function(todoText) {
+    this.todos.push({ // we are pushing an object, inside a function, inside an object
+      todoText: todoText, // we have the parameter and the argument that user is going to write
+      completed: false // it's false by default
+    });
+    this.displayTodos();
+  },
+  changeTodo: function(position, todoText) {
+    this.todos[position].todoText = todoText; // we want the todoText property to be changed, not the whole object, so we put ".todoText"
+    this.displayTodos();
+  },
+  deleteTodo: function (position) {
+    this.todos.splice(position, 1);
+    this.displayTodos();
+  },
+  toggleCompleted: function(position) {
+    var todo = this.todos[position];
+    todo.completed = !todo.completed;
+    this.displayTodos();
+  },
+  toggleAll: function() {
+    var totalTodos = this.todos.length;
+    var completedTodos = 0; // that's a safe assumption
+    
+    // get number of completed todos
+    for (var i = 0; i < totalTodos; i++) {
+      if (this.todos[i].completed === true) {
+        completedTodos++;
+      }
+    }
+    
+  // Case 1: if everything is true, make everything false
+    if(completedTodos === totalTodos) {
+      // make everything false
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = false;
+      }
+    } else {
+    // Case 2: otherwise make everything true
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = true;
+      }
+    }
+    this.displayTodos();
+  }
+};
+
+var handlers = {
+  displayTodos: function(){
+  todoList.displayTodos();
+  },
+  toggleAll: function(){
+  todoList.toggleAll();
+  }
+};
